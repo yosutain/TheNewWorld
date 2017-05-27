@@ -1,0 +1,30 @@
+<div id="theNewWorld">
+	<div class="gridMapContainer z-1">
+		<div *ngFor="let tile of tiles; let i=index">
+			<div class="tileNumber{{i + 1}} tileBorderType{{tile.id}}" 
+			[class.selected]="i === selectedTileNumber">
+			</div>
+	  	</div>
+	</div>
+
+	<div class="gridMapContainer z-2">
+		<div *ngFor="let tile of tiles; let i=index">
+			<div class="tileNumber{{i + 1}} tileImage tileBorder">
+			</div>
+	  	</div>
+	</div>
+
+	<div class="gridMapContainer z-3">
+		<div *ngFor="let tile of tiles; let i=index">
+			<div class="tileNumber{{i + 1}} tileImage tileType{{tile.id}}">
+			</div>
+	  	</div>
+	</div>
+
+	<div class="gridMapContainer z-4">
+		<div *ngFor="let tile of tiles; let i=index" (click)="onSelect(tile, i)">
+			<div class="tileNumber{{i + 1}} tileSelector" [class.selected]="i === selectedTileNumber">
+			</div>
+	  	</div>
+	</div>
+</div>

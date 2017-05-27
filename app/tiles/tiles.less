@@ -1,0 +1,33 @@
+@tileSize: 75px;
+@tileColumns: 25;
+@tileRows: 30;
+@tileImageSize: (@tileSize * 1.4);
+
+#tileMixin(@tileUrl) {
+	margin-top: -(@tileImageSize * 0.4);
+	height: @tileImageSize * 1.4;
+  	width: @tileImageSize; 
+
+	background: @tileUrl;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: bottom;
+}
+
+.generate-tileType(@from, @to) when (@from =< @to) {
+	.tileType@{from} {
+		#tileMixin(url("/assets/tile@{from}.png"));
+	}
+	.generate-tileType((@from + 1), @to);
+}
+.generate-tileType(1, 30);
+
+.tileBorder {
+	#tileMixin(url("/assets/tileBorder.png"));
+}
+
+.tileSelector {
+	height: @tileSize;
+  	width: @tileSize;
+  	transform: rotate(45deg);
+}
